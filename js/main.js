@@ -8,23 +8,78 @@ Se il numero è presente nella lista dei numeri generati (bombe), la partita ter
 La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 */
-var x = randomNumber(1, 100);
-console.log(x);
-var numeroBombe = 16;
+
+//********************creazione campo da gioco*****************************
+var numeroMin = 1
+var numeroMax = 100
+var rangeNumeri = numeroMax - numeroMin + 1;
+
+//creazione random delle bombe
+var numeroBombe = 20;
 
 var bombe = [];
-console.log(x);
 
 var nuovaBomba;
 
 while (bombe.length < numeroBombe){
-    nuovaBomba = randomNumber (1, 20);
+    nuovaBomba = randomNumber (numeroMin, numeroMax);
     if (! bombe.includes(nuovaBomba)){
         bombe.push(nuovaBomba);
     }
 }
+//************************************************************************
+
 
 console.log(bombe);
+
+var user = 0;
+
+var listUser = [];
+
+var punteggio = listUser.length ;
+console.log('list user:', listUser);
+
+while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) ){
+
+    //inserimento numeri utente e verica che non ci siano doppioni
+    while (listUser.includes(user) || user < numeroMin || user > numeroMax ){
+        user = parseInt(prompt('Inserisci un numero'));
+
+        //messaggio di vvertimento nel caso il numero sia gia stato inserito
+        if (listUser.includes(user)){
+            alert('ATTENZIONE: hai gia inserito questo numero');
+        } else if (user < numeroMin || user > numeroMax){
+            alert('ATTENZIONE: inserisic un numero compreso tra ' + numeroMin + 'e' + numeroMax);
+        }
+    }
+
+    //inserimento del nuovo numero nell'array se rispettante le condizioni precedenti
+    listUser.push(user);
+    if (! bombe.includes(user)){
+        punteggio++;
+    }
+    console.log('punteggio attuale:', punteggio);
+}
+
+
+//visualizzazione punteggio finale e ipotetica vittoria
+if (punteggio < (rangeNumeri - numeroBombe)){
+    console.log('La partita è finita ed hai fatto un punteggio di:', punteggio);
+} else if(punteggio== (rangeNumeri - numeroBombe )){
+    console.log('Complimenti hai vinto la partita');
+}
+
+
+
+
+
+
+// var user;
+// while (! bombe.includes(user)){
+//     user = parseInt(prompt('Inserisci un numero'));
+//     punteggio ++;
+// }
+
 
 
 
