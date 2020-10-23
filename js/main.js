@@ -80,7 +80,6 @@ while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) 
     if (! bombe.includes(user)){
         punteggio++;
     }
-    console.log('complimenti non hai beccato nessuna bomba!');
     console.log('punteggio attuale:', punteggio);
 }
 
