@@ -74,17 +74,12 @@ if (punteggio < (rangeNumeri - numeroBombe)){
 
 
 
-// var user;
-// while (! bombe.includes(user)){
-//     user = parseInt(prompt('Inserisci un numero'));
-//     punteggio ++;
-// }
-
-
-
-
 //funzioni
-
+/**
+ * creazione numeri random compresi tra i due parametri in ingresso
+ * @param {*} min numero minimo 
+ * @param {*} max numero massimo
+ */
 function randomNumber (min, max){
     var random = Math.floor(Math.random()* (max - min + 1) ) + min;
     return random;
