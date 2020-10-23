@@ -9,10 +9,32 @@ La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 */
 
+
+
+
+
+
 //********************creazione campo da gioco*****************************
 var numeroMin = 1
 var numeroMax = 100
 var rangeNumeri = numeroMax - numeroMin + 1;
+
+//selezione difficoltà
+var diff = parseInt(prompt ('inserisci un livello di difficoltà tra 0 e 2'));
+
+while (diff != 0 && diff!= 1 && diff != 2 ){
+    diff = parseInt(prompt ('ATTENZIONE: inserisic un numero compreso tra 0 e 2'));
+}
+
+if (diff = 0){
+    numeroMax = 100;
+} else if (diff = 1){
+    numeroMax = 80;
+} else{
+    numeroMax = 50;
+}
+
+console.log('numeroMax":' + numeroMax);
 
 //creazione random delle bombe
 var numeroBombe = 20;
@@ -49,7 +71,7 @@ while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) 
         if (listUser.includes(user)){
             alert('ATTENZIONE: hai gia inserito questo numero');
         } else if (user < numeroMin || user > numeroMax){
-            alert('ATTENZIONE: inserisic un numero compreso tra ' + numeroMin + 'e' + numeroMax);
+            alert('ATTENZIONE: inserisic un numero compreso tra ' + numeroMin + ' e ' + numeroMax);
         }
     }
 
@@ -58,6 +80,7 @@ while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) 
     if (! bombe.includes(user)){
         punteggio++;
     }
+    console.log('complimenti non hai beccato nessuna bomba!');
     console.log('punteggio attuale:', punteggio);
 }
 
