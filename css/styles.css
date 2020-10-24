@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #cecece;
+    font-family: sans-serif;
+}
+
+h1{
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(67, 69, 71);
+}
+
+.contenitor{
+    width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: indianred;
+    border-radius: 5px;
+}

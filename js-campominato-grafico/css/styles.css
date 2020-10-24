@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: steelblue;
+    font-family: sans-serif;
+}
+
+h1, h2{
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.contenitor{
+    width: 800px;
+    margin: 20px auto;
+}
+
+.campo{
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box{
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.box .inside-flower{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    background-image: url('../img/flower.png') ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.box .inside-bomb{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    background-image: url('../img/bomb.png') ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* .box.bomb{
+    background-color: tomato;
+} */
+
+.box.bomb-show{
+    background-color: crimson;
+}
+
+
+/* .box.flower{
+    background-color: chartreuse;
+} */
+
+
+.box.bomb:hover{
+    background-color: tomato;
+}

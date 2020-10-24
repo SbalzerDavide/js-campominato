@@ -1,43 +1,19 @@
-/*
-Descrizione
-Il computer deve generare 16 numeri casuali (bombe) tra 1 e 100.
-I numeri non possono essere duplicati
-In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-L'utente non può inserire più volte lo stesso numero.
-Se il numero è presente nella lista dei numeri generati (bombe), la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
-La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
-Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
-*/
-
-
-
-
-
+//inserimento numeri dentro i box
+for (var i = 1; i < 101; i++){
+    var y = 'a', i;
+    y = document.getElementById(i).innerHTML = i;
+}
 
 //********************creazione campo da gioco*****************************
 var numeroMin = 1
 var numeroMax = 100
 var rangeNumeri = numeroMax - numeroMin + 1;
 
-//selezione difficoltà
-var diff = parseInt(prompt ('inserisci un livello di difficoltà tra 0 e 2'));
-
-while (diff != 0 && diff!= 1 && diff != 2 ){
-    diff = parseInt(prompt ('ATTENZIONE: inserisic un numero compreso tra 0 e 2'));
-}
-
-if (diff = 0){
-    numeroMax = 100;
-} else if (diff = 1){
-    numeroMax = 80;
-} else{
-    numeroMax = 50;
-}
-
 console.log('numeroMax":' + numeroMax);
 
 //creazione random delle bombe
 var numeroBombe = 20;
+console.log('numero bombe: ' + numeroBombe);
 
 var bombe = [];
 
@@ -49,17 +25,29 @@ while (bombe.length < numeroBombe){
         bombe.push(nuovaBomba);
     }
 }
+
+console.log('posizione bombe: ' + bombe.sort());
+console.log('range numeri: ' + rangeNumeri)
+
+var boxBombe = 0;
+
+
+for (var i = 0; i < rangeNumeri; i++){
+    for ( var y = 0; y < bombe.length; y++){
+        if (bombe[y] == i){
+            var htmlId = document.getElementById(i).className = 'box bomb';
+        }
+    }
+}
 //************************************************************************
 
 
-console.log(bombe);
-
+//FUNZIONAMENTO GIOCO
 var user = 0;
 
 var listUser = [];
 
 var punteggio = listUser.length ;
-console.log('list user:', listUser);
 
 while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) ){
 
@@ -67,7 +55,7 @@ while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) 
     while (listUser.includes(user) || user < numeroMin || user > numeroMax ){
         user = parseInt(prompt('Inserisci un numero'));
 
-        //messaggio di vvertimento nel caso il numero sia gia stato inserito
+        //messaggio di avertimento nel caso il numero sia gia stato inserito
         if (listUser.includes(user)){
             alert('ATTENZIONE: hai gia inserito questo numero');
         } else if (user < numeroMin || user > numeroMax){
@@ -76,24 +64,32 @@ while (! bombe.includes(user) && listUser.length <= (rangeNumeri - numeroBombe) 
     }
 
     //inserimento del nuovo numero nell'array se rispettante le condizioni precedenti
-    listUser.push(user);
+    listUser.push(user);    
+
     if (! bombe.includes(user)){
         punteggio++;
+        for (var i = 0; i < rangeNumeri; i++){
+            if (user == i){
+                var htmlIdFlower = document.getElementById(i).className = 'box flower';
+                htmlIdFlower = document.getElementById(i).innerHTML = '<div class="inside-flower"></div>';
+            }
+        }
+    } else {
+        for (var i = 0; i < bombe.length; i++){
+            htmlId = document.getElementById(bombe[i]).className = 'box bomb-show';
+            htmlIdFlower = document.getElementById(bombe[i]).innerHTML = '<div class="inside-bomb"></div>';
+        } 
     }
     console.log('punteggio attuale:', punteggio);
 }
 
-
 //visualizzazione punteggio finale e ipotetica vittoria
 if (punteggio < (rangeNumeri - numeroBombe)){
-    console.log('La partita è finita ed hai fatto un punteggio di:', punteggio);
+    var risultato = 'La partita è finita! <br> Il tuo punteggio è di: ' + punteggio;
+    var risultatoInner = document.getElementById('risultato').innerHTML = risultato;
 } else if(punteggio== (rangeNumeri - numeroBombe )){
     console.log('Complimenti hai vinto la partita');
 }
-
-
-
-
 
 
 //funzioni
